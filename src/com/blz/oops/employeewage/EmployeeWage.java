@@ -5,22 +5,26 @@ public class EmployeeWage {
 	public static final int Is_Full_Time = 2;
 	public static final int EMP_RATE_PER_HOUR = 20;
 	public static final int Num_Of_Working_Days = 20;
+	public static final int Max_Hrs_In_Month = 100;
 
 	public static void main(String[] args) {
 
 		welcome();
-		monthlyWage();
+		totalEmpWage();
 	}
 
 	static void welcome() {
 		System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 	}
 
-	static void monthlyWage() {
+	static void totalEmpWage() {
 		int empHrs = 0;
-		int empWage = 0;
+		int totalEmpHrs = 0;
+		int totalWorkingDays = 0;
 		int totalEmpWage = 0;
-		for (int day = 1; day <= Num_Of_Working_Days; day++) {
+
+		while (totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_Working_Days) {
+			totalWorkingDays++;
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 			switch (empCheck) {
 			case Is_Part_Time:
@@ -32,11 +36,12 @@ public class EmployeeWage {
 			default:
 				empHrs = 0;
 			}
-			empWage = empHrs * EMP_RATE_PER_HOUR;
-			totalEmpWage += empWage;
-			System.out.println("Employee_wage:" + empWage);
-		}
-		System.out.println("Total Employee_wage:" + totalEmpWage);
-	}
+			totalEmpHrs += empHrs;
 
+			System.out.println("Day#: " + totalWorkingDays + "Employee Hr: " + empHrs);
+		}
+
+		totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+		System.out.println("Total Employee Wage: " + totalEmpWage);
+	}
 }
