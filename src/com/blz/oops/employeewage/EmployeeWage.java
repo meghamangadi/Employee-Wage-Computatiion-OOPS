@@ -2,20 +2,27 @@ package com.blz.oops.employeewage;
 
 public class EmployeeWage {
 	public static void main(String[] args) {
+
 		welcome();
-		attendanceCheck();
+		emopDailyWage();
 	}
 
 	static void welcome() {
 		System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 	}
 
-	static void attendanceCheck() {
-		int isFullTime = 1;
+	static void emopDailyWage() {
+		int Is_Full_Time = 1;
+		int EMP_RATE_PER_HOUR = 20;
+		int empHrs = 0;
+		int empWage = 0;
 		int empCheck = (int) Math.floor(Math.random() * 10) % 2;
-		if (empCheck == isFullTime)
-			System.out.println("Employee is present");
+		if (empCheck == Is_Full_Time)
+			empHrs = 8;
 		else
-			System.out.println("Employee is absent");
+			empHrs = 0;
+		empWage = empHrs * EMP_RATE_PER_HOUR;
+		System.out.println("Employee_wage:" + empWage);
 	}
+
 }
